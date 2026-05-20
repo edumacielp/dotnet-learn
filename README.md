@@ -1,40 +1,46 @@
 # dotnet.learn
 
-A modern, bilingual (EN/PT-BR) learning hub for .NET developers.
+A modern, bilingual (English / Portuguese-BR) learning hub for .NET developers. This repo contains content, interactive quizzes and a small UI for learning common .NET topics.
 
-## Stack
-- **Next.js 16** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
-- IBM Plex Mono + Outfit fonts
+Quick highlights
+- Bilingual content (EN / PT-BR)
+- Interactive quizzes and image-driven examples
+- Mobile-first UI built with Next.js (App Router) and Tailwind
 
-## Getting Started
+Prerequisites
+- Node 18+ and npm (or pnpm)
 
+Local development
 ```bash
 npm install
 npm run dev
 ```
+Open http://localhost:3000 and the app redirects to `/en` by default.
 
-Open [http://localhost:3000](http://localhost:3000)
+Project structure (important files)
+- `app/` — Next.js App Router pages and layout
+- `components/` — React UI components (header, sidebar, topic cards, interactive widgets)
+- `content/en` & `content/pt-br` — topic content files (export `Topic` objects and quizzes)
+- `lib/content.ts` — central registry and helpers to load topics and quizzes
+- `public/` — static assets
+- `types/` — shared TypeScript types
 
-The app redirects to `/en` by default. Switch to `/pt-br` using the language toggle in the header.
+Adding or updating a topic
+1. Create `content/en/<topic>.ts` and `content/pt-br/<topic>.ts` exporting the `Topic` object and `QuizQuestion[]`.
+2. Register the topic in `lib/content.ts` by adding it to `ALL_TOPICS` and the `getTopicContent` / `getTopicQuiz` switch blocks.
+3. Use `status: 'available'` to make the topic visible on the home page.
 
-## Routes
-- `/en` or `/pt-br` — Home page with topic grid
-- `/en/topic/docker` — Docker topic (available)
-- `/pt-br/topic/docker` — Docker em português
+Translation notes
+- Keep titles, descriptions and section text consistent across both language files. The site falls back to English when a translation is missing.
 
-## Adding New Topics
+Contributing
+- See CONTRIBUTING.md for a short contribution guide and PR checklist.
 
-1. Create `content/en/your-topic.ts` and `content/pt-br/your-topic.ts`  
-   Export a `Topic` object and a `QuizQuestion[]` array.
-2. Register the topic in `lib/content.ts` — add to `ALL_TOPICS` and the `getTopicContent` / `getTopicQuiz` switches.
-3. Set `status: 'available'` to make it live.
+Deployment
+- Deploy using Vercel: `npx vercel`. The App Router is supported by default.
 
-## Deploy to Vercel
+Notes for maintainers
+- This project uses `lucide-react` for small icons and aims to be mobile-first; responsive behavior is implemented inline in a few pages for simplicity. See `AGENTS.md` for notes about this Next.js version.
 
-```bash
-npx vercel
-```
-
-No extra config needed — the App Router works out of the box on Vercel.
+Contact
+- Author: Eduardo Maciel — GitHub / LinkedIn: `edumacielp`
