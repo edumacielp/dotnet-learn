@@ -72,6 +72,13 @@ export const dockerTopic: Topic = {
   color: '#00d4aa',
   sections: [
     {
+      id: 'notes',
+      title: 'Notes',
+      content: [
+        { type: 'text', text: 'This content was largely taken from the free course "Docker Full Course For .NET Developers" by Julio Casal. All credit goes to the original author.' },
+      ],
+    },
+    {
       id: 'why-docker',
       title: 'Why Docker?',
       content: [

@@ -72,6 +72,13 @@ export const dockerTopicPtBr: Topic = {
   color: '#00d4aa',
   sections: [
     {
+      id: 'notes',
+      title: 'Observações',
+      content: [
+        { type: 'text', text: 'Grande parte deste conteúdo foi baseada no curso gratuito Docker Full Course For .NET Developers, de Julio Casal. Ficam aqui os devidos créditos!' },
+      ],
+    },
+    {
       id: 'why-docker',
       title: 'Por que Docker?',
       content: [
