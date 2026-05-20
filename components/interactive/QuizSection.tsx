@@ -118,9 +118,9 @@ export default function QuizSection({ questions, t }: Props) {
               fontFamily: 'Outfit, sans-serif',
               marginBottom: '1.5rem',
             }}>
-              {percentage >= 80 ? '🔥 Excellent! You really know your Docker.' :
+              {percentage >= 80 ? '🔥 Excellent! You\'re killing it!' :
                percentage >= 60 ? 'Good progress! Review the sections you missed.' :
-               'Keep studying — revisit the topic and try again.'}
+               'You\'re on the right track, keep studying — review the topics and try again!'}
             </p>
             <button
               onClick={retake}

@@ -99,8 +99,8 @@ export default async function HomePage({ params }: Props) {
             display: 'flex', gap: '2rem', flexWrap: 'wrap',
           }}>
             {[
-              { label: activeLang === 'pt-br' ? 'tópicos' : 'topics', value: '5' },
-              { label: activeLang === 'pt-br' ? 'disponível agora' : 'available now', value: '1' },
+              { label: activeLang === 'pt-br' ? 'tópicos' : 'topics', value: ALL_TOPICS.length.toString() },
+              { label: activeLang === 'pt-br' ? 'disponível agora' : 'available now', value: ALL_TOPICS.filter((t) => t.status === 'available').length.toString() },
               { label: activeLang === 'pt-br' ? 'idiomas' : 'languages', value: '2' },
               { label: activeLang === 'pt-br' ? 'quizzes interativos' : 'interactive quizzes', value: '✓' },
             ].map((stat) => (
