@@ -189,8 +189,8 @@ export default async function HomePage({ params }: Props) {
             fontFamily: 'Outfit, sans-serif',
           }}>
             {activeLang === 'pt-br'
-              ? 'Feito por um dev .NET, para devs .NET. Compartilhe no LinkedIn ✦'
-              : 'Built by a .NET dev, for .NET devs. Share it on LinkedIn ✦'}
+              ? 'Feito por um dev .NET, para devs .NET! Compartilhe no LinkedIn e contribua no GitHub ✦'
+              : 'Built by a .NET dev, for .NET devs! Share it on LinkedIn and contribute on GitHub ✦'}
           </p>
           <span style={{
             fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.75rem',

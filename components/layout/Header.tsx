@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { GitPullRequest } from 'lucide-react';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 interface Props {
@@ -49,15 +50,35 @@ export default function Header({ lang }: Props) {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Link href={`/${lang}`} style={{
-            fontFamily: 'Outfit, sans-serif',
-            fontSize: '0.875rem',
-            color: 'var(--text-muted)',
-            textDecoration: 'none',
-          }}>
-            {lang === 'pt-br' ? 'Tópicos' : 'Topics'}
-          </Link>
-          <div style={{ width: '1px', height: '16px', background: 'var(--border)' }} />
+          <a
+            href="https://github.com/edumacielp/dotnet-learn"
+            target="_blank"
+            rel="noreferrer noopener"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontFamily: 'Outfit, sans-serif',
+              fontSize: '0.9rem',
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+              padding: '0.25rem 0.55rem',
+              borderRadius: '999px',
+              border: '1px solid transparent',
+              transition: 'border-color 0.2s ease, color 0.2s ease',
+            }}
+            onMouseEnter={(event) => {
+              (event.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--border)';
+              (event.currentTarget as HTMLAnchorElement).style.color = 'var(--text-primary)';
+            }}
+            onMouseLeave={(event) => {
+              (event.currentTarget as HTMLAnchorElement).style.borderColor = 'transparent';
+              (event.currentTarget as HTMLAnchorElement).style.color = 'var(--text-muted)';
+            }}
+          >
+            <GitPullRequest size={16} />
+            {lang === 'pt-br' ? 'contribua' : 'contribute'}
+          </a>
           <LanguageSwitcher currentLang={lang} />
         </div>
       </div>
