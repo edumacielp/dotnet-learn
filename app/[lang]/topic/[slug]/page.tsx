@@ -24,21 +24,39 @@ export default async function TopicPage({ params }: Props) {
   const t = getTranslation(activeLang);
 
   return (
-    <div style={{ display: 'flex', minHeight: 'calc(100vh - 56px)' }}>
+    <div className="topic-root" style={{ minHeight: 'calc(100vh - 56px)' }}>
+      <style>{`
+        .topic-root { display: block; }
+        .topic-sidebar { display: none; }
+        .topic-main { display: block; }
+        .topic-hero { padding: 1.5rem 1rem 1rem; }
+        .topic-content { padding: 0 1rem 2.5rem; }
+        .right-col { display: none; }
+
+        @media (min-width: 880px) {
+          .topic-root { display: flex; }
+          .topic-sidebar { display: block; width: 240px; flex-shrink: 0; }
+          .topic-main { flex: 1; min-width: 0; overflow-x: hidden; }
+          .topic-hero { padding: 2.5rem 2.5rem 2rem; }
+          .topic-content { padding: 0 2.5rem 4rem; }
+          .right-col { display: block; width: 200px; flex-shrink: 0; }
+        }
+      `}</style>
       {/* Sidebar */}
-      <Sidebar
-        sections={topic.sections}
-        lang={activeLang}
-        topicSlug={slug}
-        tocLabel={t.topic.tableOfContents}
-      />
+      <div className="topic-sidebar">
+        <Sidebar
+          sections={topic.sections}
+          lang={activeLang}
+          topicSlug={slug}
+          tocLabel={t.topic.tableOfContents}
+        />
+      </div>
 
       {/* Main content */}
-      <div style={{ flex: 1, minWidth: 0, overflowX: 'hidden' }}>
+      <div className="topic-main" style={{ flex: 1, minWidth: 0, overflowX: 'hidden' }}>
         {/* Topic hero */}
-        <div style={{
+        <div className="topic-hero" style={{
           borderBottom: '1px solid var(--border)',
-          padding: '2.5rem 2.5rem 2rem',
           background: 'var(--bg-surface)',
           position: 'relative',
           overflow: 'hidden',
@@ -127,7 +145,7 @@ export default async function TopicPage({ params }: Props) {
         </div>
 
         {/* Sections content */}
-        <div style={{ padding: '0 2.5rem 4rem' }}>
+        <div className="topic-content">
           {topic.sections.map((section) => (
             <section
               key={section.id}
@@ -179,11 +197,7 @@ export default async function TopicPage({ params }: Props) {
       </div>
 
       {/* Right column — On this page (desktop) */}
-      <div style={{
-        width: '200px',
-        flexShrink: 0,
-        display: 'none',
-      }} />
+      <div className="right-col" />
     </div>
   );
 }
