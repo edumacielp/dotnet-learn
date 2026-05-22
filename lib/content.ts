@@ -33,6 +33,16 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         return mod.dockerTopic;
       }
     }
+ 
+    if (slug === 'agentic-engineering') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/agentic-engineering`);
+        return mod.agenticTopicPtBr;
+      } else {
+        const mod = await import(`@/content/en/agentic-engineering`);
+        return mod.agenticTopic;
+      }
+    }
 
     return null;
   } catch {
@@ -73,6 +83,16 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
         return mod.dockerQuiz;
       }
     }
+ 
+    if (slug === 'agentic-engineering') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/agentic-engineering`);
+        return mod.agenticQuizPtBr;
+      } else {
+        const mod = await import(`@/content/en/agentic-engineering`);
+        return mod.agenticQuiz;
+      }
+    }
 
     return [];
   } catch {
@@ -106,6 +126,14 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Docker', description: 'Containers, imagens, volumes e tudo para entregar apps .NET com consistência.' },
   },
   {
+    slug: 'agentic-engineering',
+    icon: '🤖',
+    color: '#a78bfa',
+    status: 'available' as const,
+    en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
+    'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
+  },
+  {
     slug: 'terraform',
     icon: '🏗️',
     color: '#f7a24f',
@@ -120,13 +148,5 @@ export const ALL_TOPICS = [
     status: 'coming-soon' as const,
     en: { title: 'Dependency Injection', description: 'Master .NET\'s built-in DI container, lifetimes, and service registration patterns.' },
     'pt-br': { title: 'Injeção de Dependências', description: 'Domine o container DI do .NET, tempos de vida e padrões de registro de serviços.' },
-  },
-  {
-    slug: 'claude-code',
-    icon: '✨',
-    color: '#a78bfa',
-    status: 'coming-soon' as const,
-    en: { title: 'Claude Code', description: 'Harness the power of AI to generate, refactor, and optimize your .NET code.' },
-    'pt-br': { title: 'Claude Code', description: 'Aproveite o poder da IA para gerar, refatorar e otimizar seu código .NET.' },
   },
 ];
