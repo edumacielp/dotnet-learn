@@ -34,6 +34,16 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
       }
     }
  
+    if (slug === 'messaging') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/messaging`);
+        return mod.messagingTopicPtBr;
+      } else {
+        const mod = await import(`@/content/en/messaging`);
+        return mod.messagingTopic;
+      }
+    }
+ 
     if (slug === 'agentic-engineering') {
       if (langDir === 'pt-br') {
         const mod = await import(`@/content/pt-br/agentic-engineering`);
@@ -84,6 +94,16 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
       }
     }
  
+    if (slug === 'messaging') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/messaging`);
+        return mod.messagingQuizPtBr;
+      } else {
+        const mod = await import(`@/content/en/messaging`);
+        return mod.messagingQuiz;
+      }
+    }
+ 
     if (slug === 'agentic-engineering') {
       if (langDir === 'pt-br') {
         const mod = await import(`@/content/pt-br/agentic-engineering`);
@@ -104,7 +124,7 @@ export const ALL_TOPICS = [
   {
     slug: 'versioning',
     icon: '🔖',
-    color: '#caf74f',
+    color: '#ecf74f',
     status: 'available' as const,
     en: { title: 'Versioning', description: 'Git workflows, Semantic Versioning, Conventional Commits, and .NET package versioning done right.' },
     'pt-br': { title: 'Versionamento', description: 'Git workflows, SemVer, Conventional Commits e versionamento de pacotes .NET do jeito certo.' },
@@ -126,6 +146,14 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Docker', description: 'Containers, imagens, volumes e tudo para entregar apps .NET com consistência.' },
   },
   {
+    slug: 'messaging',
+    icon: '📨',
+    color: '#4ff74f',
+    status: 'available' as const,
+    en: { title: 'Messaging', description: 'Queues, events, and the Saga Pattern — how .NET services talk without depending on each other.' },
+    'pt-br': { title: 'Mensageria', description: 'Filas, eventos e o Padrão Saga — como serviços .NET se comunicam sem depender uns dos outros.' },
+  },
+  {
     slug: 'agentic-engineering',
     icon: '🤖',
     color: '#a78bfa',
@@ -136,7 +164,7 @@ export const ALL_TOPICS = [
   {
     slug: 'terraform',
     icon: '🏗️',
-    color: '#f7a24f',
+    color: '#854e2f',
     status: 'coming-soon' as const,
     en: { title: 'Terraform', description: 'Infrastructure as Code for provisioning Azure resources in .NET projects.' },
     'pt-br': { title: 'Terraform', description: 'Infraestrutura como código para provisionar recursos Azure em projetos .NET.' },
@@ -144,9 +172,17 @@ export const ALL_TOPICS = [
   {
     slug: 'dependency-injection',
     icon: '💉',
-    color: '#4f8ef7',
+    color: '#f7a24f',
     status: 'coming-soon' as const,
     en: { title: 'Dependency Injection', description: 'Master .NET\'s built-in DI container, lifetimes, and service registration patterns.' },
     'pt-br': { title: 'Injeção de Dependências', description: 'Domine o container DI do .NET, tempos de vida e padrões de registro de serviços.' },
+  },
+  {
+    slug: 'clean-code',
+    icon: '🧹',
+    color: '#f74f4f',
+    status: 'coming-soon' as const,
+    en: { title: 'Clean Code', description: 'Principles, patterns, and practices for maintainable .NET codebases.' },
+    'pt-br': { title: 'Código Limpo', description: 'Princípios, padrões e práticas para bases de código .NET sustentáveis.' },
   },
 ];
