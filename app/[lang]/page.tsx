@@ -54,7 +54,7 @@ export default async function HomePage({ params }: Props) {
               fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.72rem',
               color: 'var(--text-muted)', letterSpacing: '0.04em',
             }}>
-              {activeLang === 'pt-br' ? 'em construção · contribua no GitHub' : 'work in progress · share on LinkedIn'}
+              {activeLang === 'pt-br' ? 'em construção · contribua no GitHub' : 'work in progress · share!'}
             </span>
           </div>
 
@@ -121,6 +121,78 @@ export default async function HomePage({ params }: Props) {
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* LinkedIn highlight */}
+          <div style={{
+            marginTop: '3rem', padding: '1.8rem', borderRadius: '28px',
+            border: '1px solid rgba(79, 142, 247, 0.18)',
+            background: 'linear-gradient(180deg, rgba(4, 4, 10, 0.95), rgba(10, 12, 28, 0.95))',
+            boxShadow: '0 25px 75px rgba(0, 0, 0, 0.2)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ minWidth: 0 }}>
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.75rem',
+                  letterSpacing: '0.14em', textTransform: 'uppercase',
+                  color: 'var(--accent-secondary)',
+                }}>
+                  {t.home.linkedin.label}
+                </span>
+                <h2 style={{
+                  marginTop: '0.85rem', fontSize: '1.6rem', lineHeight: 1.15,
+                  fontWeight: 700, color: 'var(--text-primary)',
+                  maxWidth: '680px',
+                }}>
+                  {t.home.linkedin.title}
+                </h2>
+                <p style={{
+                  marginTop: '1rem', maxWidth: '680px',
+                  color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.75,
+                }}>
+                  {t.home.linkedin.description}
+                </p>
+              </div>
+              <a
+                href="https://www.linkedin.com/posts/edumacielp_ol%C3%A1-linkedin-durante-minha-carreira-como-ugcPost-7464730256097124352-cg5X/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDP0eQB7DZLHstGqgINSKU8U4UhZHQ1hAY"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  padding: '0.95rem 1.4rem', borderRadius: '999px',
+                  background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+                  color: '#070a13', fontWeight: 700, textDecoration: 'none',
+                  boxShadow: '0 18px 40px rgba(0, 212, 170, 0.15)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {t.home.linkedin.cta}
+              </a>
+            </div>
+
+            <div style={{
+              marginTop: '1.75rem', padding: '1.25rem 1.3rem', borderRadius: '22px',
+              background: 'rgba(5, 8, 18, 0.95)', border: '1px solid var(--border)',
+            }}>
+              <p style={{
+                color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.8,
+              }}>
+                {t.home.linkedin.quote}
+              </p>
+              <div style={{
+                marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.65rem',
+                color: 'var(--text-muted)', fontSize: '0.85rem',
+              }}>
+                <span style={{
+                  width: '10px', height: '10px', borderRadius: '999px',
+                  background: 'linear-gradient(180deg, #0a66c2, #00d4aa)',
+                  boxShadow: '0 0 12px rgba(0, 212, 170, 0.25)',
+                  display: 'inline-block',
+                }} />
+                <span>LinkedIn · May 2026</span>
+              </div>
+            </div>
           </div>
         </div>
 

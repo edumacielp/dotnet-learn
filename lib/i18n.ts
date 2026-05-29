@@ -11,6 +11,13 @@ export const translations: Record<string, I18nContent> = {
       subtitle: 'No fluff. No filler. Just sharp, practical knowledge for developers who mean business.',
       explore: 'Explore topic',
       comingSoon: 'Coming soon',
+      linkedin: {
+        label: 'Latest update',
+        title: 'LinkedIn Post',
+        description: 'Read the post where I shared this .NET learning project! Please, feel free to contribute or share your feedback.',
+        quote: 'Hi LinkedIn! During my career as a developer, I\'ve often needed to revisit topics to refresh my memory...',
+        cta: 'See the post',
+      },
     },
     topic: {
       tableOfContents: 'On this page',
@@ -49,6 +56,13 @@ export const translations: Record<string, I18nContent> = {
       subtitle: 'Sem enrolação. Só conhecimento prático e afiado para devs que levam a sério.',
       explore: 'Explorar tópico',
       comingSoon: 'Em breve',
+      linkedin: {
+        label: 'Latest update',
+        title: 'Post no LinkedIn',
+        description: 'Veja o post onde compartilhei este projeto .NET! Por favor, sinta-se à vontade para contribuir ou compartilhar seu feedback.',
+        quote: 'Olá LinkedIn! Durante minha carreira como desenvolvedor, muitas vezes precisei voltar a estudar tópicos para refrescar a memória...',
+        cta: 'Ver o post',
+      },
     },
     topic: {
       tableOfContents: 'Nesta página',

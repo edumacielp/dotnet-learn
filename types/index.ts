@@ -48,6 +48,13 @@ export interface I18nContent {
     subtitle: string;
     explore: string;
     comingSoon: string;
+    linkedin: {
+      label: string;
+      title: string;
+      description: string;
+      quote: string;
+      cta: string;
+    };
   };
   topic: {
     tableOfContents: string;
