@@ -4,6 +4,16 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
   try {
     const langDir = lang === 'pt-br' ? 'pt-br' : 'en';
  
+    if (slug === 'auth') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/auth`);
+        return mod.authTopicPtBr;
+      } else {
+        const mod = await import(`@/content/en/auth`);
+        return mod.authTopic;
+      }
+    }
+
     if (slug === 'versioning') {
       if (langDir === 'pt-br') {
         const mod = await import(`@/content/pt-br/versioning`);
@@ -63,6 +73,16 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
 export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQuestion[]> {
   try {
     const langDir = lang === 'pt-br' ? 'pt-br' : 'en';
+ 
+    if (slug === 'auth') {
+      if (langDir === 'pt-br') {
+        const mod = await import(`@/content/pt-br/auth`);
+        return mod.authQuizPtBr;
+      } else {
+        const mod = await import(`@/content/en/auth`);
+        return mod.authQuiz;
+      }
+    }
 
     if (slug === 'versioning') {
       if (langDir === 'pt-br') {
@@ -122,6 +142,14 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
 
 export const ALL_TOPICS = [
   {
+    slug: 'auth',
+    icon: '🔐',
+    color: '#f7c948',
+    status: 'available' as const,
+    en: { title: 'Auth', description: 'JWT, cookies, token revocation, and protecting your .NET API from the most common auth attacks.' },
+    'pt-br': { title: 'Auth', description: 'JWT, cookies, revogação de tokens e como proteger sua API .NET dos ataques de autenticação mais comuns.' },
+  },
+  {
     slug: 'versioning',
     icon: '🔖',
     color: '#ecf74f',
@@ -172,7 +200,7 @@ export const ALL_TOPICS = [
   {
     slug: 'dependency-injection',
     icon: '💉',
-    color: '#f7a24f',
+    color: '#9034fa',
     status: 'coming-soon' as const,
     en: { title: 'Dependency Injection', description: 'Master .NET\'s built-in DI container, lifetimes, and service registration patterns.' },
     'pt-br': { title: 'Injeção de Dependências', description: 'Domine o container DI do .NET, tempos de vida e padrões de registro de serviços.' },
