@@ -5,63 +5,52 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
     const langDir = lang === 'pt-br' ? 'pt-br' : 'en';
  
     if (slug === 'auth') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/auth`);
-        return mod.authTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/auth`);
-        return mod.authTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/auth`)
+        : await import(`@/content/en/auth`)) as any;
+      return langDir === 'pt-br' ? mod.authTopicPtBr : mod.authTopic;
     }
 
     if (slug === 'versioning') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/versioning`);
-        return mod.versioningTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/versioning`);
-        return mod.versioningTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/versioning`)
+        : await import(`@/content/en/versioning`)) as any;
+      return langDir === 'pt-br' ? mod.versioningTopicPtBr : mod.versioningTopic;
     }
     
     if (slug === 'azure') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/azure`);
-        return mod.azureTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/azure`);
-        return mod.azureTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/azure`)
+        : await import(`@/content/en/azure`)) as any;
+      return langDir === 'pt-br' ? mod.azureTopicPtBr : mod.azureTopic;
     }
 
     if (slug === 'docker') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/docker`);
-        return mod.dockerTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/docker`);
-        return mod.dockerTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/docker`)
+        : await import(`@/content/en/docker`)) as any;
+      return langDir === 'pt-br' ? mod.dockerTopicPtBr : mod.dockerTopic;
+    }
+ 
+    if (slug === 'ef-core') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/ef-core`)
+        : await import(`@/content/en/ef-core`)) as any;
+      return langDir === 'pt-br' ? mod.efCoreTopicPtBr : mod.efCoreTopic;
     }
  
     if (slug === 'messaging') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/messaging`);
-        return mod.messagingTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/messaging`);
-        return mod.messagingTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/messaging`)
+        : await import(`@/content/en/messaging`)) as any;
+      return langDir === 'pt-br' ? mod.messagingTopicPtBr : mod.messagingTopic;
     }
  
     if (slug === 'agentic-engineering') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/agentic-engineering`);
-        return mod.agenticTopicPtBr;
-      } else {
-        const mod = await import(`@/content/en/agentic-engineering`);
-        return mod.agenticTopic;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/agentic-engineering`)
+        : await import(`@/content/en/agentic-engineering`)) as any;
+      return langDir === 'pt-br' ? mod.agenticTopicPtBr : mod.agenticTopic;
     }
 
     return null;
@@ -75,63 +64,52 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
     const langDir = lang === 'pt-br' ? 'pt-br' : 'en';
  
     if (slug === 'auth') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/auth`);
-        return mod.authQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/auth`);
-        return mod.authQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/auth`)
+        : await import(`@/content/en/auth`)) as any;
+      return langDir === 'pt-br' ? mod.authQuizPtBr : mod.authQuiz;
     }
 
     if (slug === 'versioning') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/versioning`);
-        return mod.versioningQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/versioning`);
-        return mod.versioningQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/versioning`)
+        : await import(`@/content/en/versioning`)) as any;
+      return langDir === 'pt-br' ? mod.versioningQuizPtBr : mod.versioningQuiz;
     }
 
     if (slug === 'azure') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/azure`);
-        return mod.azureQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/azure`);
-        return mod.azureQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/azure`)
+        : await import(`@/content/en/azure`)) as any;
+      return langDir === 'pt-br' ? mod.azureQuizPtBr : mod.azureQuiz;
     }
 
     if (slug === 'docker') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/docker`);
-        return mod.dockerQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/docker`);
-        return mod.dockerQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/docker`)
+        : await import(`@/content/en/docker`)) as any;
+      return langDir === 'pt-br' ? mod.dockerQuizPtBr : mod.dockerQuiz;
+    }
+ 
+    if (slug === 'ef-core') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/ef-core`)
+        : await import(`@/content/en/ef-core`)) as any;
+      return langDir === 'pt-br' ? mod.efCoreQuizPtBr : mod.efCoreQuiz;
     }
  
     if (slug === 'messaging') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/messaging`);
-        return mod.messagingQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/messaging`);
-        return mod.messagingQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/messaging`)
+        : await import(`@/content/en/messaging`)) as any;
+      return langDir === 'pt-br' ? mod.messagingQuizPtBr : mod.messagingQuiz;
     }
  
     if (slug === 'agentic-engineering') {
-      if (langDir === 'pt-br') {
-        const mod = await import(`@/content/pt-br/agentic-engineering`);
-        return mod.agenticQuizPtBr;
-      } else {
-        const mod = await import(`@/content/en/agentic-engineering`);
-        return mod.agenticQuiz;
-      }
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/agentic-engineering`)
+        : await import(`@/content/en/agentic-engineering`)) as any;
+      return langDir === 'pt-br' ? mod.agenticQuizPtBr : mod.agenticQuiz;
     }
 
     return [];
@@ -174,6 +152,14 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Docker', description: 'Containers, imagens, volumes e tudo para entregar apps .NET com consistência.' },
   },
   {
+    slug: 'ef-core',
+    icon: '🗄️',
+    color: '#a78bfa',
+    status: 'available' as const,
+    en: { title: 'EF Core', description: 'How Entity Framework Core works, what the Change Tracker does, and when to use EF Core, Dapper, or raw SQL.' },
+    'pt-br': { title: 'EF Core', description: 'Como o Entity Framework Core funciona, o que o Change Tracker faz e quando usar EF Core, Dapper ou SQL puro.' },
+  },
+  {
     slug: 'messaging',
     icon: '📨',
     color: '#4ff74f',
@@ -188,14 +174,6 @@ export const ALL_TOPICS = [
     status: 'available' as const,
     en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
     'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
-  },
-  {
-    slug: 'terraform',
-    icon: '🏗️',
-    color: '#854e2f',
-    status: 'coming-soon' as const,
-    en: { title: 'Terraform', description: 'Infrastructure as Code for provisioning Azure resources in .NET projects.' },
-    'pt-br': { title: 'Terraform', description: 'Infraestrutura como código para provisionar recursos Azure em projetos .NET.' },
   },
   {
     slug: 'dependency-injection',
