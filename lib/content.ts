@@ -38,6 +38,13 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         : await import(`@/content/en/ef-core`)) as any;
       return langDir === 'pt-br' ? mod.efCoreTopicPtBr : mod.efCoreTopic;
     }
+
+    if (slug === 'memory') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/memory`)
+        : await import(`@/content/en/memory`) as any;
+      return langDir === 'pt-br' ? mod.memoryTopicPtBr : mod.memoryTopic;
+    }
  
     if (slug === 'messaging') {
       const mod = (langDir === 'pt-br'
@@ -98,6 +105,13 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
       return langDir === 'pt-br' ? mod.efCoreQuizPtBr : mod.efCoreQuiz;
     }
  
+    if (slug === 'memory') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/memory`)
+        : await import(`@/content/en/memory`) as any;
+      return langDir === 'pt-br' ? mod.memoryQuizPtBr : mod.memoryQuiz;
+    }
+
     if (slug === 'messaging') {
       const mod = (langDir === 'pt-br'
         ? await import(`@/content/pt-br/messaging`)
@@ -158,6 +172,20 @@ export const ALL_TOPICS = [
     status: 'available' as const,
     en: { title: 'EF Core', description: 'How Entity Framework Core works, what the Change Tracker does, and when to use EF Core, Dapper, or raw SQL.' },
     'pt-br': { title: 'EF Core', description: 'Como o Entity Framework Core funciona, o que o Change Tracker faz e quando usar EF Core, Dapper ou SQL puro.' },
+  }, 
+  {
+    slug: 'memory',
+    icon: '🧠',
+    color: '#ff6cff',
+    status: 'available' as const,
+    en: {
+      title: 'Memory & References',
+      description: 'RAM - Stack vs Heap, value vs reference types, mutation bugs, closures, the GC, and why projections matter.',
+    },
+    'pt-br': {
+      title: 'Memória & Referências',
+      description: 'RAM - Stack vs Heap, tipos de valor vs referência, bugs de mutação, closures, o GC e por que projeções importam.',
+    },
   },
   {
     slug: 'messaging',
@@ -170,7 +198,7 @@ export const ALL_TOPICS = [
   {
     slug: 'agentic-engineering',
     icon: '🤖',
-    color: '#a78bfa',
+    color: '#fa3a3a',
     status: 'available' as const,
     en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
     'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
