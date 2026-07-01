@@ -59,6 +59,13 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         : await import(`@/content/en/agentic-engineering`)) as any;
       return langDir === 'pt-br' ? mod.agenticTopicPtBr : mod.agenticTopic;
     }
+    
+    if (slug === 'financial-math') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/financial-math`)
+        : await import(`@/content/en/financial-math`) as any;
+      return langDir === 'pt-br' ? mod.financialMathTopicPtBr : mod.financialMathTopic;
+    }
 
     return null;
   } catch {
@@ -124,6 +131,13 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
         ? await import(`@/content/pt-br/agentic-engineering`)
         : await import(`@/content/en/agentic-engineering`)) as any;
       return langDir === 'pt-br' ? mod.agenticQuizPtBr : mod.agenticQuiz;
+    }
+
+    if (slug === 'financial-math') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/financial-math`)
+        : await import(`@/content/en/financial-math`) as any;
+      return langDir === 'pt-br' ? mod.financialMathQuizPtBr : mod.financialMathQuiz;
     }
 
     return [];
@@ -202,6 +216,20 @@ export const ALL_TOPICS = [
     status: 'available' as const,
     en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
     'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
+  },
+  {
+    slug: 'financial-math',
+    icon: '🧮',
+    color: '#22d3ee',
+    status: 'available' as const,
+    en: {
+      title: 'Financial Math',
+      description: 'decimal vs double, Math.Round gotchas, the allocation problem, and the System Boundaries pattern for clean financial code.',
+    },
+    'pt-br': {
+      title: 'Matemática Financeira',
+      description: 'decimal vs double, armadilhas do Math.Round, o problema de alocação e o System Boundaries pattern para código financeiro limpo.',
+    },
   },
   {
     slug: 'dependency-injection',
