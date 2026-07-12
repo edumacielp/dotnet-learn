@@ -31,6 +31,13 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         : await import(`@/content/en/docker`)) as any;
       return langDir === 'pt-br' ? mod.dockerTopicPtBr : mod.dockerTopic;
     }
+
+    if (slug === 'dependency-injection') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/dependency-injection`)
+        : await import(`@/content/en/dependency-injection`) as any;
+      return langDir === 'pt-br' ? mod.dependencyInjectionTopicPtBr : mod.dependencyInjectionTopic;
+    }
  
     if (slug === 'ef-core') {
       const mod = (langDir === 'pt-br'
@@ -52,19 +59,19 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         : await import(`@/content/en/messaging`)) as any;
       return langDir === 'pt-br' ? mod.messagingTopicPtBr : mod.messagingTopic;
     }
- 
-    if (slug === 'agentic-engineering') {
-      const mod = (langDir === 'pt-br'
-        ? await import(`@/content/pt-br/agentic-engineering`)
-        : await import(`@/content/en/agentic-engineering`)) as any;
-      return langDir === 'pt-br' ? mod.agenticTopicPtBr : mod.agenticTopic;
-    }
     
     if (slug === 'financial-math') {
       const mod = langDir === 'pt-br'
         ? await import(`@/content/pt-br/financial-math`)
         : await import(`@/content/en/financial-math`) as any;
       return langDir === 'pt-br' ? mod.financialMathTopicPtBr : mod.financialMathTopic;
+    }
+ 
+    if (slug === 'agentic-engineering') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/agentic-engineering`)
+        : await import(`@/content/en/agentic-engineering`)) as any;
+      return langDir === 'pt-br' ? mod.agenticTopicPtBr : mod.agenticTopic;
     }
 
     return null;
@@ -104,6 +111,13 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
         : await import(`@/content/en/docker`)) as any;
       return langDir === 'pt-br' ? mod.dockerQuizPtBr : mod.dockerQuiz;
     }
+
+    if (slug === 'dependency-injection') {
+      const mod = langDir === 'pt-br'
+        ? await import(`@/content/pt-br/dependency-injection`)
+        : await import(`@/content/en/dependency-injection`) as any;
+      return langDir === 'pt-br' ? mod.dependencyInjectionQuizPtBr : mod.dependencyInjectionQuiz;
+    }
  
     if (slug === 'ef-core') {
       const mod = (langDir === 'pt-br'
@@ -125,19 +139,19 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
         : await import(`@/content/en/messaging`)) as any;
       return langDir === 'pt-br' ? mod.messagingQuizPtBr : mod.messagingQuiz;
     }
- 
-    if (slug === 'agentic-engineering') {
-      const mod = (langDir === 'pt-br'
-        ? await import(`@/content/pt-br/agentic-engineering`)
-        : await import(`@/content/en/agentic-engineering`)) as any;
-      return langDir === 'pt-br' ? mod.agenticQuizPtBr : mod.agenticQuiz;
-    }
 
     if (slug === 'financial-math') {
       const mod = langDir === 'pt-br'
         ? await import(`@/content/pt-br/financial-math`)
         : await import(`@/content/en/financial-math`) as any;
       return langDir === 'pt-br' ? mod.financialMathQuizPtBr : mod.financialMathQuiz;
+    }
+ 
+    if (slug === 'agentic-engineering') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/agentic-engineering`)
+        : await import(`@/content/en/agentic-engineering`)) as any;
+      return langDir === 'pt-br' ? mod.agenticQuizPtBr : mod.agenticQuiz;
     }
 
     return [];
@@ -180,6 +194,14 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Docker', description: 'Containers, imagens, volumes e tudo para entregar apps .NET com consistência.' },
   },
   {
+    slug: 'dependency-injection',
+    icon: '💉',
+    color: '#34faae',
+    status: 'available' as const,
+    en: { title: 'Dependency Injection', description: 'Master .NET\'s built-in DI container, lifetimes, and service registration patterns.' },
+    'pt-br': { title: 'Injeção de Dependências', description: 'Domine o container DI do .NET, tempos de vida e padrões de registro de serviços.' },
+  },
+  {
     slug: 'ef-core',
     icon: '🗄️',
     color: '#a78bfa',
@@ -190,7 +212,7 @@ export const ALL_TOPICS = [
   {
     slug: 'memory',
     icon: '🧠',
-    color: '#ff6cff',
+    color: '#ff6cf8',
     status: 'available' as const,
     en: {
       title: 'Memory & References',
@@ -210,14 +232,6 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Mensageria', description: 'Filas, eventos e o Padrão Saga — como serviços .NET se comunicam sem depender uns dos outros.' },
   },
   {
-    slug: 'agentic-engineering',
-    icon: '🤖',
-    color: '#fa3a3a',
-    status: 'available' as const,
-    en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
-    'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
-  },
-  {
     slug: 'financial-math',
     icon: '🧮',
     color: '#22d3ee',
@@ -232,12 +246,12 @@ export const ALL_TOPICS = [
     },
   },
   {
-    slug: 'dependency-injection',
-    icon: '💉',
-    color: '#9034fa',
-    status: 'coming-soon' as const,
-    en: { title: 'Dependency Injection', description: 'Master .NET\'s built-in DI container, lifetimes, and service registration patterns.' },
-    'pt-br': { title: 'Injeção de Dependências', description: 'Domine o container DI do .NET, tempos de vida e padrões de registro de serviços.' },
+    slug: 'agentic-engineering',
+    icon: '🤖',
+    color: '#fa3a3a',
+    status: 'available' as const,
+    en: { title: 'Agentic Engineering', description: 'Leverage AI agents to automate and enhance your .NET development workflow.' },
+    'pt-br': { title: 'Agentic Engineering', description: 'Utilize agentes de IA para automatizar e aprimorar seu fluxo de trabalho de desenvolvimento .NET.' },
   },
   {
     slug: 'clean-code',

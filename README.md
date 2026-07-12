@@ -1,4 +1,4 @@
-# dotnet.learn
+# ⚡ dotnet.learn
 
 A modern, bilingual (English / Portuguese-BR) learning hub for .NET developers. This repo contains content, interactive quizzes and a small UI for learning common .NET topics.
 
