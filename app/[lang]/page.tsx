@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ALL_TOPICS } from '@/lib/content';
+import { ALL_TOPICS, TOPIC_CATEGORIES } from '@/lib/content';
 import { getTranslation } from '@/lib/i18n';
 import TopicCard from '@/components/content/TopicCard';
 
@@ -12,6 +12,10 @@ export default async function HomePage({ params }: Props) {
   const validLangs = ['en', 'pt-br'];
   const activeLang = validLangs.includes(lang) ? lang : 'en';
   const t = getTranslation(activeLang);
+  const topicsByCategory = TOPIC_CATEGORIES.map((category) => ({
+    ...category,
+    topics: ALL_TOPICS.filter((topic) => topic.category === category.id),
+  }));
 
   return (
     <div
@@ -54,7 +58,7 @@ export default async function HomePage({ params }: Props) {
               fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.72rem',
               color: 'var(--text-muted)', letterSpacing: '0.04em',
             }}>
-              {activeLang === 'pt-br' ? 'em construção · contribua no GitHub' : 'work in progress · share!'}
+              {activeLang === 'pt-br' ? 'em construção · contribua no GitHub' : 'work in progress · share it!'}
             </span>
           </div>
 
@@ -63,7 +67,7 @@ export default async function HomePage({ params }: Props) {
             fontSize: 'clamp(2rem, 5vw, 3.25rem)',
             fontWeight: 700,
             lineHeight: 1.1,
-            letterSpacing: '-0.03em',
+            letterSpacing: '-0.05em',
             marginBottom: '1.25rem',
           }}>
             <span style={{ color: 'var(--text-primary)' }}>
@@ -79,7 +83,7 @@ export default async function HomePage({ params }: Props) {
             </span>
             <br />
             <span style={{ color: 'var(--text-primary)' }}>
-              {activeLang === 'pt-br' ? 'como profissional' : 'like a professional'}
+              {activeLang === 'pt-br' ? 'como um profissional' : 'like a professional'}
             </span>
           </h1>
 
@@ -196,6 +200,36 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
 
+        {/* Category index */}
+        <nav
+          aria-label={activeLang === 'pt-br' ? 'Categorias de tópicos' : 'Topic categories'}
+          style={{
+            display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '3rem',
+          }}
+        >
+          {topicsByCategory.map((category) => {
+            const info = category[activeLang as 'en' | 'pt-br'];
+
+            return (
+              <a
+                key={category.id}
+                href={`#${category.id}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  padding: '0.6rem 0.85rem', border: '1px solid var(--border)',
+                  borderRadius: '8px', background: 'var(--bg-card)',
+                  color: 'var(--text-secondary)', textDecoration: 'none',
+                  fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.72rem',
+                }}
+              >
+                <span style={{ color: 'var(--accent-primary)' }}>{category.icon}</span>
+                <span>{info.title}</span>
+                <span style={{ color: 'var(--text-muted)' }}>{category.topics.length}</span>
+              </a>
+            );
+          })}
+        </nav>
+
         {/* Divider */}
         <div style={{
           display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem',
@@ -205,46 +239,56 @@ export default async function HomePage({ params }: Props) {
             fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.7rem',
             color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase',
           }}>
-            {activeLang === 'pt-br' ? 'tópicos' : 'topics'}
+            {activeLang === 'pt-br' ? 'por categoria' : 'by category'}
           </span>
           <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
         </div>
 
-        {/* Topic grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '1rem',
-        }}>
-          {ALL_TOPICS.map((topic) => {
-            const info = topic[activeLang as 'en' | 'pt-br'] ?? topic.en;
-            const isAvailable = topic.status === 'available';
+        {/* Topic groups */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
+          {topicsByCategory.map((category) => {
+            const categoryInfo = category[activeLang as 'en' | 'pt-br'];
 
-            return isAvailable ? (
-              <Link
-                key={topic.slug}
-                href={`/${activeLang}/topic/${topic.slug}`}
-                style={{ textDecoration: 'none' }}
-              >
-                <TopicCard
-                  icon={topic.icon}
-                  title={info.title}
-                  description={info.description}
-                  color={topic.color}
-                  status={topic.status}
-                  ctaLabel={t.home.explore}
-                />
-              </Link>
-            ) : (
-              <TopicCard
-                key={topic.slug}
-                icon={topic.icon}
-                title={info.title}
-                description={info.description}
-                color={topic.color}
-                status={topic.status}
-                ctaLabel={t.home.comingSoon}
-              />
+            return (
+              <section key={category.id} id={category.id} style={{ scrollMarginTop: '80px' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                  <div>
+                    <h2 style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginRight: '0.6rem' }}>{category.icon}</span>
+                      {categoryInfo.title}
+                    </h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: '0.25rem' }}>
+                      {categoryInfo.description}
+                    </p>
+                  </div>
+                  <span style={{ color: 'var(--text-muted)', fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.7rem' }}>
+                    {category.topics.length} {activeLang === 'pt-br' ? 'tópicos' : 'topics'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+                  {category.topics.map((topic) => {
+                    const info = topic[activeLang as 'en' | 'pt-br'] ?? topic.en;
+                    const isAvailable = topic.status === 'available';
+                    const card = (
+                      <TopicCard
+                        icon={topic.icon}
+                        title={info.title}
+                        description={info.description}
+                        color={topic.color}
+                        status={topic.status}
+                        ctaLabel={isAvailable ? t.home.explore : t.home.comingSoon}
+                      />
+                    );
+
+                    return isAvailable ? (
+                      <Link key={topic.slug} href={`/${activeLang}/topic/${topic.slug}`} style={{ textDecoration: 'none' }}>
+                        {card}
+                      </Link>
+                    ) : <div key={topic.slug}>{card}</div>;
+                  })}
+                </div>
+              </section>
             );
           })}
         </div>

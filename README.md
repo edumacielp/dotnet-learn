@@ -21,7 +21,7 @@ Project structure (important files)
 - `app/` — Next.js App Router pages and layout
 - `components/` — React UI components (header, sidebar, topic cards, interactive widgets)
 - `content/en` & `content/pt-br` — topic content files (export `Topic` objects and quizzes)
-- `lib/content.ts` — central registry and helpers to load topics and quizzes
+- `lib/content.ts` — central registry, category definitions, and helpers to load topics and quizzes
 - `public/` — static assets
 - `types/` — shared TypeScript types
 
@@ -29,6 +29,14 @@ Adding or updating a topic
 1. Create `content/en/<topic>.ts` and `content/pt-br/<topic>.ts` exporting the `Topic` object and `QuizQuestion[]`.
 2. Register the topic in `lib/content.ts` by adding it to `ALL_TOPICS` and the `getTopicContent` / `getTopicQuiz` switch blocks.
 3. Use `status: 'available'` to make the topic visible on the home page.
+
+Topic categories
+- `csharp` — C# and .NET fundamentals, runtime, data access, and application concerns
+- `architecture` — service and integration patterns
+- `cloud-devops` — deployment and infrastructure tooling such as Docker and Azure
+- `engineering-practice` — workflow, quality, versioning, and developer productivity
+
+Add the topic's `category` in `ALL_TOPICS` when registering it. Category labels and descriptions are translated centrally in `TOPIC_CATEGORIES`.
 
 Translation notes
 - Keep titles, descriptions and section text consistent across both language files. The site falls back to English when a translation is missing.

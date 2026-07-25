@@ -1,4 +1,36 @@
-import type { Topic, QuizQuestion } from '@/types';
+import type { Topic, QuizQuestion, TopicCategory } from '@/types';
+
+export const TOPIC_CATEGORIES: Array<{
+  id: TopicCategory;
+  icon: string;
+  en: { title: string; description: string };
+  'pt-br': { title: string; description: string };
+}> = [
+  {
+    id: 'csharp',
+    icon: '#',
+    en: { title: 'C# & .NET', description: 'Core language, framework, data, and runtime knowledge.' },
+    'pt-br': { title: 'C# & .NET', description: 'Conhecimentos essenciais de linguagem, framework, dados e runtime.' },
+  },
+  {
+    id: 'architecture',
+    icon: '⌘',
+    en: { title: 'Architecture', description: 'Patterns for designing services that work together.' },
+    'pt-br': { title: 'Arquitetura', description: 'Padrões para projetar serviços que trabalham juntos.' },
+  },
+  {
+    id: 'cloud-devops',
+    icon: '↗',
+    en: { title: 'Cloud & DevOps', description: 'Build, ship, and operate .NET applications.' },
+    'pt-br': { title: 'Cloud & DevOps', description: 'Construa, entregue e opere aplicações .NET.' },
+  },
+  {
+    id: 'engineering-practice',
+    icon: '✦',
+    en: { title: 'Engineering Practice', description: 'Habits and tools for a stronger development workflow.' },
+    'pt-br': { title: 'Prática de Engenharia', description: 'Hábitos e ferramentas para um fluxo de desenvolvimento melhor.' },
+  },
+];
 
 export async function getTopicContent(slug: string, lang: string): Promise<Topic | null> {
   try {
@@ -163,6 +195,7 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
 export const ALL_TOPICS = [
   {
     slug: 'auth',
+    category: 'csharp',
     icon: '🔐',
     color: '#f7c948',
     status: 'available' as const,
@@ -171,6 +204,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'versioning',
+    category: 'engineering-practice',
     icon: '🔖',
     color: '#ecf74f',
     status: 'available' as const,
@@ -179,6 +213,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'azure',
+    category: 'cloud-devops',
     icon: '☁️',
     color: '#0078d4',
     status: 'available' as const,
@@ -187,6 +222,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'docker',
+    category: 'cloud-devops',
     icon: '🐳',
     color: '#00d4aa',
     status: 'available' as const,
@@ -195,6 +231,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'dependency-injection',
+    category: 'csharp',
     icon: '💉',
     color: '#34faae',
     status: 'available' as const,
@@ -203,6 +240,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'ef-core',
+    category: 'csharp',
     icon: '🗄️',
     color: '#a78bfa',
     status: 'available' as const,
@@ -211,6 +249,7 @@ export const ALL_TOPICS = [
   }, 
   {
     slug: 'memory',
+    category: 'csharp',
     icon: '🧠',
     color: '#ff6cf8',
     status: 'available' as const,
@@ -225,6 +264,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'messaging',
+    category: 'architecture',
     icon: '📨',
     color: '#4ff74f',
     status: 'available' as const,
@@ -233,6 +273,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'financial-math',
+    category: 'csharp',
     icon: '🧮',
     color: '#22d3ee',
     status: 'available' as const,
@@ -247,6 +288,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'agentic-engineering',
+    category: 'engineering-practice',
     icon: '🤖',
     color: '#fa3a3a',
     status: 'available' as const,
@@ -255,6 +297,7 @@ export const ALL_TOPICS = [
   },
   {
     slug: 'clean-code',
+    category: 'engineering-practice',
     icon: '🧹',
     color: '#f74f4f',
     status: 'coming-soon' as const,

@@ -53,7 +53,7 @@ export const translations: Record<string, I18nContent> = {
     },
     home: {
       tagline: 'O Guia de Campo do Desenvolvedor .NET',
-      subtitle: 'Sem enrolação. Só conhecimento prático e afiado para devs que levam a sério.',
+      subtitle: 'Sem enrolação. Só conhecimento prático e afiado para devs que buscam evoluir.',
       explore: 'Explorar tópico',
       comingSoon: 'Em breve',
       linkedin: {

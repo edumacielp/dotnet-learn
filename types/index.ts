@@ -8,6 +8,8 @@ export interface Topic {
   sections: Section[];
 }
 
+export type TopicCategory = 'csharp' | 'architecture' | 'cloud-devops' | 'engineering-practice';
+
 export interface Section {
   id: string;
   title: string;
