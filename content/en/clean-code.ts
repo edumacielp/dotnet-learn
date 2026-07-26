@@ -119,8 +119,8 @@ public static bool IsReadyForDispatch(this Order order) =>
           type: 'concept-grid',
           items: [
             { icon: '🧩', title: 'KISS', description: 'Keep It Simple: choose the simplest design that solves the actual problem.', color: '#00d4aa' },
-            { icon: '♻️', title: 'DRY', description: 'Do not repeat knowledge. Share behavior only when it has the same meaning and change reason.', color: '#4f8ef7' },
-            { icon: '🛑', title: 'YAGNI', description: 'You Aren’t Gonna Need It: do not build speculative flexibility before a real requirement exists.', color: '#f7a24f' },
+            { icon: '♻️', title: 'DRY', description: 'Don\'t Repeat Yourself. Share behavior only when it has the same meaning and change reason.', color: '#4f8ef7' },
+            { icon: '🛑', title: 'YAGNI', description: 'You Aren\'t Gonna Need It: do not build speculative flexibility before a real requirement exists.', color: '#f7a24f' },
           ],
         },
         { type: 'code', language: 'csharp', label: 'Simple beats speculative', code: `// Start with the requirement you have.

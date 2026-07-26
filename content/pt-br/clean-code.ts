@@ -84,8 +84,8 @@ public static bool IsReadyForDispatch(this Order order) =>
         { type: 'text', text: 'Essas heurísticas protegem a base de código de complexidade desnecessária, mas nenhuma é uma lei absoluta. Use-as junto com contexto e testes.' },
         { type: 'concept-grid', items: [
           { icon: '🧩', title: 'KISS', description: 'Keep It Simple: escolha o design mais simples que resolve o problema real.', color: '#00d4aa' },
-          { icon: '♻️', title: 'DRY', description: 'Não repita conhecimento. Compartilhe comportamento quando ele tiver o mesmo significado e motivo de mudança.', color: '#4f8ef7' },
-          { icon: '🛑', title: 'YAGNI', description: 'You Aren’t Gonna Need It: não construa flexibilidade especulativa antes de uma necessidade real.', color: '#f7a24f' },
+          { icon: '♻️', title: 'DRY', description: 'Don\'t Repeat Yourself. Compartilhe comportamento quando ele tiver o mesmo significado e motivo de mudança.', color: '#4f8ef7' },
+          { icon: '🛑', title: 'YAGNI', description: 'You Aren\'t Gonna Need It: não construa flexibilidade especulativa antes de uma necessidade real.', color: '#f7a24f' },
         ] },
         { type: 'code', language: 'csharp', label: 'O simples vence o especulativo', code: `// Comece com o requisito que você tem.
 public Task SendReceiptAsync(Order order)
