@@ -8,6 +8,15 @@ export interface Topic {
   sections: Section[];
 }
 
+export interface RealWorldScenario {
+  slug: string;
+  icon: string;
+  color: string;
+  status: 'available' | 'coming-soon';
+  en: { title: string; description: string };
+  'pt-br': { title: string; description: string };
+}
+
 export type TopicCategory = 'csharp' | 'architecture' | 'cloud-devops' | 'engineering-practice';
 
 export interface Section {

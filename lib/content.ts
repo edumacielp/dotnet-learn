@@ -1,4 +1,4 @@
-import type { Topic, QuizQuestion, TopicCategory } from '@/types';
+import type { Topic, QuizQuestion, TopicCategory, RealWorldScenario } from '@/types';
 
 export const TOPIC_CATEGORIES: Array<{
   id: TopicCategory;
@@ -319,3 +319,7 @@ export const ALL_TOPICS = [
     'pt-br': { title: 'Código Limpo', description: 'Princípios, padrões e práticas para bases de código .NET sustentáveis.' },
   },
 ];
+
+// Scenarios intentionally have their own catalog. Add metadata here when the
+// first case study is ready, then add its content loader alongside the topics.
+export const REAL_WORLD_SCENARIOS: RealWorldScenario[] = [];

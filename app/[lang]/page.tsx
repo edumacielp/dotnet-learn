@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ALL_TOPICS, TOPIC_CATEGORIES } from '@/lib/content';
+import { ALL_TOPICS, TOPIC_CATEGORIES, REAL_WORLD_SCENARIOS } from '@/lib/content';
 import { getTranslation } from '@/lib/i18n';
 import TopicCard from '@/components/content/TopicCard';
 
@@ -200,6 +200,27 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
 
+        {/* Normal topics */}
+        <div id="topics" style={{ scrollMarginTop: '80px' }}>
+          <div style={{ marginBottom: '1.25rem' }}>
+            <h2 style={{
+              display: 'flex', alignItems: 'center', gap: '0.7rem',
+              fontFamily: 'IBM Plex Mono, monospace', fontSize: '1.6rem', fontWeight: 700,
+              letterSpacing: '-0.03em', color: 'var(--text-primary)',
+            }}>
+              <span style={{
+                width: '5px', height: '30px', borderRadius: '3px', flexShrink: 0,
+                background: 'linear-gradient(180deg, var(--accent-primary), transparent)',
+              }} />
+              {activeLang === 'pt-br' ? 'Tópicos de aprendizado' : 'Learning topics'}
+            </h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+              {activeLang === 'pt-br'
+                ? 'Conceitos e ferramentas que formam a base do desenvolvimento .NET.'
+                : 'Concepts and tools that form the foundation of .NET development.'}
+            </p>
+          </div>
+
         {/* Category index */}
         <nav
           aria-label={activeLang === 'pt-br' ? 'Categorias de tópicos' : 'Topic categories'}
@@ -292,6 +313,78 @@ export default async function HomePage({ params }: Props) {
             );
           })}
         </div>
+        </div>
+
+        <div style={{
+          height: '1px',
+          margin: '5rem 0 0',
+          background: 'linear-gradient(90deg, var(--border), transparent)',
+        }} />
+
+        {/* Real-world scenarios */}
+        <section id="real-world-scenarios" style={{ marginTop: '3rem', scrollMarginTop: '80px' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+            <div>
+              <h2 style={{
+                display: 'flex', alignItems: 'center', gap: '0.7rem',
+                fontFamily: 'IBM Plex Mono, monospace', fontSize: '1.6rem', fontWeight: 700,
+                letterSpacing: '-0.03em', color: 'var(--text-primary)',
+              }}>
+                <span style={{
+                  width: '5px', height: '30px', borderRadius: '3px', flexShrink: 0,
+                  background: 'linear-gradient(180deg, var(--accent-secondary), transparent)',
+                }} />
+                {activeLang === 'pt-br' ? 'Cenários do mundo real' : 'Real-world scenarios'}
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, marginTop: '0.25rem', maxWidth: '650px' }}>
+                {activeLang === 'pt-br'
+                  ? 'Estudos de caso sobre como produtos reais usam .NET para resolver problemas de escala, confiabilidade, dados e arquitetura.'
+                  : 'Case studies about how real products use .NET to solve problems of scale, reliability, data, and architecture.'}
+              </p>
+            </div>
+            <span style={{ color: 'var(--text-muted)', fontFamily: 'IBM Plex Mono, monospace', fontSize: '0.7rem' }}>
+              {REAL_WORLD_SCENARIOS.length} {activeLang === 'pt-br' ? 'cenários' : 'scenarios'}
+            </span>
+          </div>
+
+          {REAL_WORLD_SCENARIOS.length === 0 ? (
+            <div style={{
+              background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '12px',
+              padding: '1.5rem', minHeight: '150px', display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            }}>
+              <p style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem' }}>
+                {activeLang === 'pt-br' ? 'A primeira história está sendo preparada.' : 'The first story is being prepared.'}
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem', lineHeight: 1.7, marginTop: '0.35rem', maxWidth: '620px' }}>
+                {activeLang === 'pt-br'
+                  ? 'Em breve: arquiteturas de startups, sistemas em grande escala e decisões técnicas explicadas de forma prática.'
+                  : 'Coming soon: startup architectures, systems at scale, and technical decisions explained in a practical way.'}
+              </p>
+            </div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+              {REAL_WORLD_SCENARIOS.map((scenario) => {
+                const info = scenario[activeLang as 'en' | 'pt-br'];
+                const card = (
+                  <TopicCard
+                    icon={scenario.icon}
+                    title={info.title}
+                    description={info.description}
+                    color={scenario.color}
+                    status={scenario.status}
+                    ctaLabel={scenario.status === 'available' ? t.home.explore : t.home.comingSoon}
+                  />
+                );
+
+                return scenario.status === 'available' ? (
+                  <Link key={scenario.slug} href={`/${activeLang}/scenario/${scenario.slug}`} style={{ textDecoration: 'none' }}>
+                    {card}
+                  </Link>
+                ) : <div key={scenario.slug}>{card}</div>;
+              })}
+            </div>
+          )}
+        </section>
 
         {/* Footer note */}
         <div style={{
