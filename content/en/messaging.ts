@@ -69,7 +69,7 @@ export const messagingTopic: Topic = {
   description: 'Queues, events, and the Saga Pattern — how .NET services talk without depending on each other.',
   icon: '📨',
   status: 'available',
-  color: '#f7a24f',
+  color: '#4ff74f',
   sections: [
     {
       id: 'why-messaging',

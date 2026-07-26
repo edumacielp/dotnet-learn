@@ -69,7 +69,7 @@ export const memoryTopicPtBr: Topic = {
   description: 'RAM - Stack vs Heap, tipos de valor vs referência, bugs de mutação, o GC e por que projeções importam para memória.',
   icon: '🧠',
   status: 'available',
-  color: '#00d4aa',
+  color: '#ff6cf8',
   sections: [
     {
       id: 'stack-vs-heap',

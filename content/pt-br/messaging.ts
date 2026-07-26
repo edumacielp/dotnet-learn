@@ -69,7 +69,7 @@ export const messagingTopicPtBr: Topic = {
   description: 'Filas, eventos e o Padrão Saga — como serviços .NET se comunicam sem depender uns dos outros.',
   icon: '📨',
   status: 'available',
-  color: '#f7a24f',
+  color: '#4ff74f',
   sections: [
     {
       id: 'why-messaging',

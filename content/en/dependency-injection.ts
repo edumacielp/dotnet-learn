@@ -69,7 +69,7 @@ export const dependencyInjectionTopic: Topic = {
   description: 'How the built-in .NET container works, how to choose lifetimes, and how to write clean ASP.NET Core code with constructor injection.',
   icon: '💉',
   status: 'available',
-  color: '#9034fa',
+  color: '#34faae',
   sections: [
     {
       id: 'what-di-is',

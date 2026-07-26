@@ -69,7 +69,7 @@ export const dependencyInjectionTopicPtBr: Topic = {
   description: 'Como o container nativo do .NET funciona, como escolher lifetimes e como escrever ASP.NET Core limpo com constructor injection.',
   icon: '💉',
   status: 'available',
-  color: '#9034fa',
+  color: '#34faae',
   sections: [
     {
       id: 'what-di-is',

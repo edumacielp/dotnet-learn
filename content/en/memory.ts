@@ -69,7 +69,7 @@ export const memoryTopic: Topic = {
   description: 'RAM - Stack vs Heap, value vs reference types, mutation bugs, the GC, and why projections matter for memory.',
   icon: '🧠',
   status: 'available',
-  color: '#00d4aa',
+  color: '#ff6cf8',
   sections: [
     {
       id: 'stack-vs-heap',

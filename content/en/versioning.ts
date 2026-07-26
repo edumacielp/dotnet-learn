@@ -69,7 +69,7 @@ export const versioningTopic: Topic = {
   description: 'Git workflows, Semantic Versioning, Conventional Commits, and .NET package versioning done right.',
   icon: '🔖',
   status: 'available',
-  color: '#caf74f',
+  color: '#ecf74f',
   sections: [
     {
       id: 'why-versioning',

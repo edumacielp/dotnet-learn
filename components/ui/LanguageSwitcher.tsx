@@ -10,8 +10,10 @@ export default function LanguageSwitcher({ currentLang }: Props) {
   const router = useRouter();
 
   const switchTo = (newLang: string) => {
+    if (newLang === currentLang) return;
+
     const newPath = pathname.replace(`/${currentLang}`, `/${newLang}`);
-    router.push(newPath);
+    router.push(newPath, { scroll: false });
   };
 
   return (

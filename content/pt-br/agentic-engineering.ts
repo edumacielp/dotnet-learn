@@ -69,7 +69,7 @@ export const agenticTopicPtBr: Topic = {
   description: "Utilize agentes de IA para automatizar seu fluxo de trabalho e construir aplicações .NET mais inteligentes.",
   icon: "🤖",
   status: "available",
-  color: "#a78bfa",
+  color: "#fa3a3a",
   sections: [
     {
       id: "what-is-agentic",

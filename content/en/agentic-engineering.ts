@@ -69,7 +69,7 @@ export const agenticTopic: Topic = {
   description: "Leverage AI agents to automate your development workflow and build smarter .NET applications.",
   icon: "🤖",
   status: "available",
-  color: "#a78bfa",
+  color: "#fa3a3a",
   sections: [
     {
       id: "what-is-agentic",

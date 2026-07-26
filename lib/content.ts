@@ -28,7 +28,7 @@ export const TOPIC_CATEGORIES: Array<{
     id: 'engineering-practice',
     icon: '✦',
     en: { title: 'Engineering Practice', description: 'Habits and tools for a stronger development workflow.' },
-    'pt-br': { title: 'Prática de Engenharia', description: 'Hábitos e ferramentas para um fluxo de desenvolvimento melhor.' },
+    'pt-br': { title: 'Engenharia Prática', description: 'Hábitos e ferramentas para um fluxo de desenvolvimento melhor.' },
   },
 ];
 
@@ -104,6 +104,13 @@ export async function getTopicContent(slug: string, lang: string): Promise<Topic
         ? await import(`@/content/pt-br/agentic-engineering`)
         : await import(`@/content/en/agentic-engineering`)) as any;
       return langDir === 'pt-br' ? mod.agenticTopicPtBr : mod.agenticTopic;
+    }
+
+    if (slug === 'clean-code') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/clean-code`)
+        : await import(`@/content/en/clean-code`)) as any;
+      return langDir === 'pt-br' ? mod.cleanCodeTopicPtBr : mod.cleanCodeTopic;
     }
 
     return null;
@@ -184,6 +191,13 @@ export async function getTopicQuiz(slug: string, lang: string): Promise<QuizQues
         ? await import(`@/content/pt-br/agentic-engineering`)
         : await import(`@/content/en/agentic-engineering`)) as any;
       return langDir === 'pt-br' ? mod.agenticQuizPtBr : mod.agenticQuiz;
+    }
+
+    if (slug === 'clean-code') {
+      const mod = (langDir === 'pt-br'
+        ? await import(`@/content/pt-br/clean-code`)
+        : await import(`@/content/en/clean-code`)) as any;
+      return langDir === 'pt-br' ? mod.cleanCodeQuizPtBr : mod.cleanCodeQuiz;
     }
 
     return [];
@@ -299,8 +313,8 @@ export const ALL_TOPICS = [
     slug: 'clean-code',
     category: 'engineering-practice',
     icon: '🧹',
-    color: '#f74f4f',
-    status: 'coming-soon' as const,
+    color: '#72fc65',
+    status: 'available' as const,
     en: { title: 'Clean Code', description: 'Principles, patterns, and practices for maintainable .NET codebases.' },
     'pt-br': { title: 'Código Limpo', description: 'Princípios, padrões e práticas para bases de código .NET sustentáveis.' },
   },

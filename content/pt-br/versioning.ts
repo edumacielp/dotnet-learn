@@ -69,7 +69,7 @@ export const versioningTopicPtBr: Topic = {
   description: 'Git workflows, Versionamento Semântico, Conventional Commits e versionamento de pacotes .NET do jeito certo.',
   icon: '🔖',
   status: 'available',
-  color: '#caf74f',
+  color: '#ecf74f',
   sections: [
     {
       id: 'why-versioning',
